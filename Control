@@ -1,0 +1,4 @@
+requires: l4sys l4re l4util libc_minimal libc_be_l4re libc_be_minimal_log_io
+maintainer: jan.kloetzke@kernkonzept.com
+provides: tvmm
+variants: nofpu
