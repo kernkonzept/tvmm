@@ -1,0 +1,99 @@
+# All help TBD
+
+menu "tvmm virtual machine monitor"
+
+choice
+	prompt "Verbosity"
+	default TVMM_VERBOSITY_WARN
+	help
+	  Specify debug verbosity of tvmm.
+
+config TVMM_VERBOSITY_NONE
+	bool "suppress all messages"
+
+config TVMM_VERBOSITY_ERROR
+	bool "show only errors"
+
+config TVMM_VERBOSITY_WARN
+	bool "show errors+warnings"
+
+config TVMM_VERBOSITY_ALL
+	bool "show all messages"
+
+endchoice
+
+config TVMM_GIC_DIST_BASE
+	hex "GICD base address"
+	default 0xf0000000
+	help
+	  Address of the GICv3 distributor.
+
+config TVMM_GIC_REDIST_BASE
+	hex "GICR base address"
+	default 0xf0010000
+	help
+	  Address of the GICv3 redistributor.
+
+config TVMM_GIC_VIRTUAL_SPIS
+	int "Number of virtual SPIs on GIC"
+	default 992
+	help
+	  This setting purely reflects what is reported to the guest in the
+          GICR_TYPER register. The memory consumption of tvmm solely depends on
+          the number actually assigned IRQs to the VMs.
+
+	  Allowed range: [0 .. 992]. Will be rounded up to the next multiple
+	  of 32.
+
+config TVMM_MAX_VMS
+	int "Number of supported VMs per tvmm instance"
+	default 4
+
+config TVMM_HEAP_SIZE
+	int "Heap size"
+	default 16384
+
+choice
+	prompt "Guest fault mode"
+	default TVMM_FAULT_HALT
+	help
+	  Choose how the vmm should handle invalid memory accesses of the
+	  guest.
+
+config TVMM_FAULT_HALT
+	bool "Halt"
+	help
+	  The guest is halted.
+
+config TVMM_FAULT_INJECT
+	bool "Inject"
+	help
+	  The invalid access is reflected as data- or prefetch-abort to the
+	  guest.
+
+config TVMM_FAULT_IGNORE
+	bool "Ignore"
+	help
+	  The vmm ignores the access. Reads will return 0 and writes will be
+	  silently discarded.
+
+	  Attention: only ldr instructions are decoded. Other loads (ldp, ldm)
+	  will *not* return 0 but leave the destination register unchanged.
+
+endchoice
+
+config TVMM_VM_CTRL_IFC
+	bool "VM control interface"
+	help
+	  Support controlling and monitoring guest state through an IPC
+	  interface.
+
+config TVMM_ELF_LOADER
+	bool "ELF loader"
+	help
+	  Support loading guests from an ELF file.
+
+	  Ususally the guest is loaded outside of tvmm. But if a guest needs to
+	  be restarted it must usually be loaded again.
+
+endmenu
