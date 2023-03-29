@@ -1,8 +1,9 @@
-# tVMM
+# L4Re tvmm
 
-Implements just the bare minimum to let a guest run on Arm with just HW-pass
-through. All resources must be prepared offline and must be passed to tvmm.
-Features:
+tvmm is a virtual machine monitor for the L4Re operating system when running on
+MPU based systems. It implements just the bare minimum to let a guest run on
+Arm with just HW-pass through. All resources must be prepared offline and must
+be passed to tvmm. Features:
 
 * Can host multiple VMs
 * VMs can only have a single vCPU
