@@ -9,8 +9,7 @@
  * Author(s): Sarah Hoffmann <sarah.hoffmann@kernkonzept.com>
  *            Jan Klötzke <jan.kloetzke@kernkonzept.com>
  *
- * This file is distributed under the terms of the GNU General Public
- * License, version 2.  Please see the COPYING-GPL-2 file for details.
+ * License: see LICENSE.spdx (in this directory or the directories above)
  */
 #include <stdarg.h>
 #include <stdlib.h>

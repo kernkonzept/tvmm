@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-2.0-only */
+/* SPDX-License-Identifier: MIT */
 /*
  * Copyright (C) 2022 Kernkonzept GmbH.
  * Author(s): Jan Klötzke <jan.kloetzke@kernkonzept.com>
