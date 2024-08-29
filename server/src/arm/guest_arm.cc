@@ -250,10 +250,16 @@ Vmm::Guest::_load_elf()
       if (!size)
         return;
 
-#ifdef CONFIG_PLATFORM_TYPE_s32z
+#if defined(CONFIG_PLATFORM_TYPE_s32z) || defined(CONFIG_PLATFORM_TYPE_s32n)
       // accomodate for the AXIF read-only mirroring
       if (dest > 0x70000000)
-        off = 0xb8800000U;
+        {
+#if defined(CONFIG_PLATFORM_TYPE_s32z)
+          off = 0xb8800000U;
+#else
+          off = 0xc1580000U;
+#endif
+        }
 #endif
 
       memcpy((void *)(dest + off), (char const *)data + ph.offset(), ph.filesz());
