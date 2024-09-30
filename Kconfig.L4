@@ -1,6 +1,11 @@
-# All help TBD
+config TVMM_SUPPORTED
+	def_bool BUILD_ARCH_arm
+
+comment "tvmm is not supported on this architecture"
+	depends on !TVMM_SUPPORTED
 
 menu "tvmm virtual machine monitor"
+	depends on TVMM_SUPPORTED
 
 choice
 	prompt "Verbosity"
