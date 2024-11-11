@@ -312,6 +312,11 @@ int main(int, char *argv[])
     .printf("Heap: %zu/%zu bytes free.\n", malloc_pool_avail(),
             malloc_pool_size());
 
+  // Signal that we're ready
+  auto parent = L4Re::Env::env()->parent();
+  if (parent.is_valid())
+    parent->signal(1, 0);
+
   // The first VM with cpu0 is re-using the main thread...
   if (vmm0)
     {
