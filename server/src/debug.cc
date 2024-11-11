@@ -76,9 +76,9 @@ void
 Dbg::tag() const
 {
   if (_instance)
-    ::dprintf(1, "%s[%s]: ", component_names[_c], _instance);
+    ::dprintf(1, "tvmm: %s[%s]: ", component_names[_c], _instance);
   else
-    ::dprintf(1, "%s: ", component_names[_c]);
+    ::dprintf(1, "tvmm: %s: ", component_names[_c]);
 }
 
 int

@@ -126,9 +126,10 @@ void start_vm_thread(L4::Cap<L4::Thread> thread)
 }
 
 size_t malloc_pool_avail()
-{
-  return __heap_end - heap_pos;
-}
+{ return __heap_end - heap_pos; }
+
+size_t malloc_pool_size()
+{ return __heap_end - __heap_start; }
 
 Dbg info(Dbg::Core, Dbg::Info);
 
@@ -307,7 +308,9 @@ int main(int, char *argv[])
       start_vm_thread(cpu->thread_cap());
     }
 
-  info.printf("Unused heap: %zu bytes.\n", malloc_pool_avail());
+  Dbg(Dbg::Core, Dbg::Info)
+    .printf("Heap: %zu/%zu bytes free.\n", malloc_pool_avail(),
+            malloc_pool_size());
 
   // The first VM with cpu0 is re-using the main thread...
   if (vmm0)
