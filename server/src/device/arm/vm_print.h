@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: MIT */
 /*
- * Copyright (C) 2019-2020 Kernkonzept GmbH.
+ * Copyright (C) 2019-2020, 2024 Kernkonzept GmbH.
  * Author(s): Christian Pötzsch <christian.poetzsch@kernkonzept.com>
  *
  */

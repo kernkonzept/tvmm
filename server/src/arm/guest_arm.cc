@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: MIT */
 /*
- * Copyright (C) 2015-2022 Kernkonzept GmbH.
+ * Copyright (C) 2015-2022, 2024 Kernkonzept GmbH.
  * Author(s): Sarah Hoffmann <sarah.hoffmann@kernkonzept.com>
  *            Alexander Warg <alexander.warg@kernkonzept.com>
  *            Jan Klötzke <jan.kloetzke@kernkonzept.com>
