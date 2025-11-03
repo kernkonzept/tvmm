@@ -10,7 +10,7 @@ VARIANTS        = nofpu
 
 REQUIRES_LIBS   = libc_minimal libc_minimal_l4re libc_be_minimal_log_io \
                   l4sys l4util l4re l4re-util
-DEFINES        += -DL4_CXX_NO_EXCEPTION_BACKTRACE -DL4_MINIMAL_LIBC -DL4_NO_RTTI
+DEFINES        += -DL4_CXX_NO_EXCEPTION_BACKTRACE -DL4_MINIMAL_LIBC
 CXXFLAGS       += -fno-rtti -fno-exceptions
 
 CXXFLAGS       += $(CXXFLAGS-$(ARCH))
